@@ -2,7 +2,10 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:space_app/components/app-color/app_colors.dart';
+import 'package:space_app/views/bottom-navigation/bottom_navigation.dart';
+import 'package:space_app/views/sign-up-screen/sign_up_screen.dart';
 import 'package:space_app/widgets/animated_button.dart';
+import 'package:space_app/widgets/custom_alert_dialog.dart';
 import 'package:space_app/widgets/custom_text_form_field.dart';
 
 class LoginField extends StatefulWidget {
@@ -106,7 +109,18 @@ class _LoginFieldState extends State<LoginField> {
           AnimatedButton(
               text: "Login",
               textColor: Colors.white70,
-              onTap: (){},
+              onTap: (){
+
+                // alert dialog
+                showDialog(
+                    context: context,
+                    builder: (context) => const CustomAlertDialog(
+
+                        title: "Congratulations!",
+                        alertMessage: "Login Successful"
+                    )
+                );
+              },
               height: 50,
               width: double.infinity,
               gradient: LinearGradient(
@@ -134,7 +148,10 @@ class _LoginFieldState extends State<LoginField> {
 
               TextButton(
 
-                  onPressed: (){},
+                  onPressed: (){
+                    
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const SignUpScreen()));
+                  },
                   child: Text(
 
                       "Sign Up",
