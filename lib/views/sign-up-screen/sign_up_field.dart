@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:space_app/components/app-color/app_colors.dart';
+import 'package:space_app/views/bottom-navigation/bottom_navigation.dart';
 import 'package:space_app/views/login-screen/login_screen.dart';
 import 'package:space_app/widgets/animated_button.dart';
 import 'package:space_app/widgets/custom_alert_dialog.dart';
@@ -95,10 +96,14 @@ class _SignUpFieldState extends State<SignUpField> {
                 // alert dialog
                 showDialog(
                     context: context,
-                    builder: (context) => const CustomAlertDialog(
+                    builder: (context) => CustomAlertDialog(
 
                         title: "Congratulations!",
-                        alertMessage: "Sign Up Successful"
+                        alertMessage: "Sign Up Successful",
+                        onTap: (){
+
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder:(_) => const BottomNavigation()));
+                        }
                     )
                 );
               },

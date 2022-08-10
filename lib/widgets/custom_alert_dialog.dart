@@ -8,11 +8,13 @@ import 'package:space_app/widgets/animated_button.dart';
 class CustomAlertDialog extends StatefulWidget {
 
   final String alertMessage, title;
+  VoidCallback onTap;
 
-  const CustomAlertDialog({
+  CustomAlertDialog({
     Key? key,
     required this.title,
-    required this.alertMessage
+    required this.alertMessage,
+    required this.onTap
   }) : super(key: key);
 
   @override
@@ -106,10 +108,7 @@ class _CustomAlertDialogState extends State<CustomAlertDialog> {
 
                 text: "OK",
                 textColor: Colors.white70,
-                onTap: (){
-
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => const BottomNavigation()));
-                },
+                onTap: widget.onTap,
                 height: 40,
                 width: 120,
                 gradient: LinearGradient(

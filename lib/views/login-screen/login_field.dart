@@ -114,10 +114,14 @@ class _LoginFieldState extends State<LoginField> {
                 // alert dialog
                 showDialog(
                     context: context,
-                    builder: (context) => const CustomAlertDialog(
+                    builder: (context) => CustomAlertDialog(
 
                         title: "Congratulations!",
-                        alertMessage: "Login Successful"
+                        alertMessage: "Login Successful",
+                        onTap: (){
+
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const BottomNavigation()));
+                        },
                     )
                 );
               },
