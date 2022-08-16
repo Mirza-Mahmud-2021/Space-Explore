@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 begin: Alignment.centerLeft, end: Alignment.centerRight,
                 colors: [
 
-                  AppColor.primaryColor, AppColor.secondaryColor
+                  AppColor.buttonBorder, AppColor.bottomNavIconActive
                 ]
               ),
               iconColor: Colors.white

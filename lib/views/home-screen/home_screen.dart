@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:space_app/components/app-color/app_colors.dart';
+import 'package:space_app/views/home-screen/tab-bar/home_tab_bar.dart';
 import 'package:space_app/widgets/custom_searchbar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -11,12 +12,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  final TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
 
       backgroundColor: AppColor.secondaryColor,
+
       body: SafeArea(
 
         child: SingleChildScrollView(
@@ -28,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
+                const SizedBox(height: 30),
 
                 RichText(
 
@@ -49,7 +56,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                const CustomSearchBar()
+                CustomSearchBar(
+
+                    textEditingController: searchController,
+                    onTap: (){},
+                ),
+                const SizedBox(height: 40),
+
+                // tab bar
+                const HomeTabBar()
               ],
             ),
           ),

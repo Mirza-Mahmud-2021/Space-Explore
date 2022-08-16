@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
 import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:space_app/components/app-color/app_colors.dart';
 
 class CustomSearchBar extends StatefulWidget {
 
   final TextEditingController textEditingController;
+  final VoidCallback onTap;
 
   const CustomSearchBar({
 
     Key? key,
     required this.textEditingController,
+    required this.onTap
   }) : super(key: key);
 
   @override
@@ -39,12 +42,48 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
       child: Row(
 
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          TextField()
+          Expanded(
+
+            child: TextField(
+
+              controller: widget.textEditingController,
+              cursorColor: Colors.white60,
+              style: GoogleFonts.nunito(color: Colors.white60, fontSize: 16),
+              decoration: const InputDecoration(
+
+                icon: Icon(Icons.search, color: Colors.white60),
+                hintText: "Search",
+                border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+              ),
+            ),
+          ),
+
+          GestureDetector(
+
+            onTap: widget.onTap,
+            child: Container(
+
+              height: 45, width: 45,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+
+                borderRadius: BorderRadius.circular(15),
+                gradient: LinearGradient(
+
+                  begin: Alignment.centerLeft, end: Alignment.centerRight,
+                  colors: [AppColor.buttonBorder, AppColor.bottomNavIconActive]
+                )
+              ),
+              child: const Icon(Icons.question_mark, color: Colors.white),
+            ),
+          )
         ],
-      ),
+      )
     );
   }
 }
